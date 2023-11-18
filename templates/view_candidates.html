@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Candidates for {{ election.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Candidates for {{ election.name }}</h2>
+        <div class="row">
+            {% for candidate in candidates %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ candidate.name }}</h5>
+                            <p class="card-text">{{ candidate.description }}</p>
+                            <a href="{% url 'cast_vote' election.id candidate.id %}" class="btn btn-primary">Cast Vote</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Election Results{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Election Results</h2>
+
+        {% if election_results %}
+            {% for election, results in election_results.items %}
+                <h3>{{ election.name }} - Results</h3>
+                <ul>
+                    {% for candidate, votes in results.items %}
+                        <li>{{ candidate }}: {{ votes }} votes</li>
+                    {% endfor %}
+                </ul>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p class="text-center">No completed elections found.</p>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

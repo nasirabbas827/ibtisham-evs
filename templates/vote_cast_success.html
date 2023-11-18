@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Vote Cast Successfully{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Vote Cast Successfully</h2>
+        <p class="text-center">Your vote has been cast successfully!</p>
+        <p class="text-center">Block Index: {{ block_index }}</p>
+        
+        {% if blockchain_record %}
+            <p class="text-center">Election: {{ blockchain_record.election.name }}</p>
+            <p class="text-center">Candidate: {{ blockchain_record.candidate.name }}</p>
+            <p class="text-center">Block Hash: {{ blockchain_record.block_hash }}</p>
+            <p class="text-center">Blockchain Code:</p>
+            <pre>{{ blockchain_record.block_data|escape }}</pre>
+        {% endif %}
+    </div>
+
+{% endblock %}

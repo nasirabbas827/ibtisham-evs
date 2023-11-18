@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Blockchain Voting System{% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to the Blockchain Voting System</h1>
+        <p class="lead">
+            Experience secure and transparent voting with the power of blockchain technology.
+        </p>
+        <hr class="my-4">
+        <p>
+            Cast your vote and ensure the integrity of the electoral process.
+        </p>
+        <a class="btn btn-primary btn-lg" href="#how-it-works" role="button">Learn How It Works</a>
+    </div>
+    <section id="elections" class="mb-5">
+      <div class="container">
+          <h2 class="text-center mb-4">Upcoming Elections</h2>
+          <div class="row">
+              {% for election in elections %}
+                  <div class="col-md-4">
+                      <div class="card mb-4">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ election.name }}</h5>
+                              <p class="card-text">Status: {{ election.status }}</p>
+                              <a href="{% url 'view_candidates' election.id %}" class="btn btn-primary">View Candidates</a>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+
+  <section id="candidates" class="mb-5">
+      <div class="container">
+          <h2 class="text-center mb-4">All Candidates</h2>
+          <div class="row">
+              {% for candidate in candidates %}
+                  <div class="col-md-4">
+                      <div class="card mb-4">
+                          <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ candidate.name }}</h5>
+                              <p class="card-text">{{ candidate.description }}</p>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+    <section id="features" class="mb-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Key Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Secure & Tamper-Proof</h5>
+                            <p class="card-text">Voting records are stored securely on the blockchain, ensuring tamper-proof results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Decentralized Consensus</h5>
+                            <p class="card-text">Utilize the decentralized nature of blockchain for trustworthy and transparent elections.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">User-Friendly Interface</h5>
+                            <p class="card-text">An easy-to-use interface ensures a smooth voting experience for all users.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="mb-5">
+        <div class="container">
+            <h2 class="text-center mb-4">How It Works</h2>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Authenticate using secure login credentials</li>
+                <li class="list-group-item">Access your personalized ballot</li>
+                <li class="list-group-item">Vote securely with blockchain encryption</li>
+                <li class="list-group-item">Verify your vote on the blockchain</li>
+                <li class="list-group-item">Transparent and verifiable election results</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <p class="text-center">If you have any questions or concerns, feel free to reach out to us:</p>
+            <p class="text-center">Email: <a href="mailto:info@blockchainvoting.com">info@blockchainvoting.com</a></p>
+        </div>
+    </section>
+
+{% endblock %}
